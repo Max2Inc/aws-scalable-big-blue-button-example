@@ -9,7 +9,6 @@ During a Single Deployment the following resources are created
 * A record set validating the ACM Certs
 
 
-
 ### Stacks created
 
 
