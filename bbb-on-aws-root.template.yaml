@@ -87,6 +87,9 @@ Parameters:
     Type: Number
     Description: Desired number of turn server instance
     Default: 1
+  BBBTurnInstanceKey:
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription : "must be the name of an existing EC2 KeyPair."    
   BBBOperatorEMail:
     Description: EMail address to notify if there are any operational issues
     Type: String
@@ -469,6 +472,14 @@ Parameters:
     Description: Set this parameter if you want to reuse an existing ACM certificate for your deployment
     Type: String
     Default: "AWS::NoValue"
+  BBBInstanceKey:
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription : "must be the name of an existing EC2 KeyPair."        
+  DataDogMonitorFlag:  
+    Description: Datadog monitoring flag, if turned to false is not monitored.
+    Type: String
+    Default: false
+    AllowedValues: [ true, false ]
 
 Conditions:
   BBBProdEnvironment: !Equals [!Ref BBBEnvironmentStage, prod]
@@ -582,6 +593,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag        
 
   BBBSESProviderStack:
     Type: AWS::CloudFormation::Stack
@@ -604,6 +617,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag        
 
   BBBNetworkStack:
     Type: AWS::CloudFormation::Stack
@@ -646,6 +661,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag        
 
   BBBSecurityGroupStack:
     Type: AWS::CloudFormation::Stack
@@ -678,6 +695,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag          
 
   BBBStorageStack:
     Type: AWS::CloudFormation::Stack
@@ -715,6 +734,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag          
 
   BBBDatabaseStack:
     Type: AWS::CloudFormation::Stack
@@ -762,6 +783,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag          
 
   BBBCacheDBStack:
     Type: AWS::CloudFormation::Stack
@@ -801,6 +824,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag          
 
   BBBECSStack:
     Type: AWS::CloudFormation::Stack
@@ -846,6 +871,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag          
 
   BBBTurnStack:
     Type: AWS::CloudFormation::Stack
@@ -904,6 +931,8 @@ Resources:
           Ref: BBBTurnMinInstances
         BBBTurnDesiredInstances:
           Ref: BBBTurnDesiredInstances
+        BBBTurnInstanceKey:
+          Ref: BBBTurnInstanceKey
         BBBHostedZone:
           Ref: BBBHostedZone
         BBBDomainName:
@@ -916,6 +945,9 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag
+          
 
   BBBAppStack:
     Type: AWS::CloudFormation::Stack
@@ -1030,6 +1062,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag
 
   BBBAppStackSingle:
     Type: AWS::CloudFormation::Stack
@@ -1105,6 +1139,8 @@ Resources:
           Ref: BBBHostedZone
         BBBDomainName:
           Ref: BBBDomainName
+        BBBInstanceKey:
+          Ref: BBBInstanceKey          
       Tags:
         - Key: Name
           Value:
@@ -1113,6 +1149,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag
 
   BBBFontendAppsStack:
     Type: AWS::CloudFormation::Stack
@@ -1276,6 +1314,8 @@ Resources:
           Value: !Ref BBBEnvironmentName
         - Key: Stage
           Value: !Ref BBBEnvironmentStage
+        - Key: Datadog_Monitor
+          Value: !Ref DataDogMonitorFlag          
 
 Outputs:
   BBBNotificationTopic:
