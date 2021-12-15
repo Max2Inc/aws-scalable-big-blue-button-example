@@ -11,12 +11,12 @@ During a Single Deployment the following resources are created
 
 ### Stacks created
 
-
-* [AMI Finder](help/single/AMI-Finder.md)
-* [SES Provider](help/single/AMI-Finder.md)
-* [Network Provider](help/single/Network-Provider.md)
-* [Security Group Provider](help/single/Security-Group.md)
-* [Turn Stack](help/single/Turn-stack.md)
+* [Network Provider](help/single/1-Network-Provider.md)
+* [SES Provider](help/single/2-SES-Provider.md)
+* [AMI Finder](help/single/3-AMI-Finder.md)
+* [Security Group Provider](help/single/4-Security-Group.md)
+* [Turn Stack](help/single/5-Turn-stack.md)
+* [App Stack](help/single/6-BBB-App-single.md)
 
 
 # To run a single deployment refer to the following config parameters in bbb-on-aws-param.json
@@ -26,12 +26,14 @@ During a Single Deployment the following resources are created
   "Parameters" : {
     "BBBApplicationVersion": "bionic-230",
     "BBBApplicationInstanceOSVersion": "bionic-18.04",
+    "BBBInstanceKey" : "pictolearn-ec2",
     "BBBTurnInstanceOSVersion": "focal-20.04",
     "BBBECSInstanceType": "fargate",
     "BBBApplicationInstanceType": "t3a.medium",
     "BBBApplicationDataVolumeSize": 50,
     "BBBApplicationRootVolumeSize": 20,
     "BBBTurnInstanceType": "t3a.micro",
+    "BBBTurnInstanceKey" : "pictolearn-ec2",
     "BBBDBInstanceType": "serverless",
     "BBBServerlessAuroraMinCapacity": 2,
     "BBBServerlessAuroraMaxCapacity": 4,
@@ -40,8 +42,8 @@ During a Single Deployment the following resources are created
     "BBBPrivateApplicationSubnets": "10.1.5.0/24,10.1.6.0/24,10.1.7.0/24",
     "BBBPrivateDBSubnets": "10.1.9.0/24,10.1.10.0/24,10.1.11.0/24",
     "BBBPublicApplicationSubnets": "10.1.15.0/24,10.1.16.0/24,10.1.17.0/24",
-    "BBBNumberOfAZs": 3,
-    "BBBECSMaxInstances": 3,
+    "BBBNumberOfAZs": 1,
+    "BBBECSMaxInstances": 1,
     "BBBECSMinInstances": 1,
     "BBBECSDesiredInstances": 1,
     "BBBApplicationMaxInstances": 1,
@@ -64,7 +66,8 @@ During a Single Deployment the following resources are created
     "BBBGreenlightMemory": 1024,
     "BBBGreenlightCPU": 512,
     "BBBScaleliteMemory": 2048,
-    "BBBScaleliteCPU": 1024
+    "BBBScaleliteCPU": 1024,
+    "DataDogMonitorFlag": false
   }
 }
 ```

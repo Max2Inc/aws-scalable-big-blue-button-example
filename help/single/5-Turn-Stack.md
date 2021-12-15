@@ -1,7 +1,8 @@
 # Turn Stack
 
 
-templates\bbb-on-aws-bbbturn.template.yaml
+* [Template](./../templates/bbb-on-aws-bbbturn.template.yaml)
+
 
 ## Summary
 
@@ -13,6 +14,7 @@ templates\bbb-on-aws-bbbturn.template.yaml
 | Secrets Manager | Store secrets | Refer CF script and the values stored |
 | Turn hostname | Hostname of turn server | Refer CF script AMI Instance id |
 | Turn imageid | Hostname of imageid | Refer CF script AMI Instance |
+| Turn secret | Secret to be used with turn| Refer CF script AMI Instance |
 
 ## Secrets Manager
 

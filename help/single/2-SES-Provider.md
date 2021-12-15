@@ -9,11 +9,12 @@
 
 | Resource | Usage | Values
 | ------------- | ------------- | ------------- |
-| Lambda | SES Provider | Refer CF script |
-| IAM Role | SES Provider IAM Role  | ------------- |
-| A log group | ??  | ?? |
-| Lambda | SES Provider  | ?? |
-| IAM Role | Role for the secret provider  |  |
+| Secret Provider Log Group | Secret Provider | Refer CF script |
+| Secret Provider Lambda Role | Lambda Role | Refer CF script |
+| Secret Provider | SES Provider | Refer CF script |
+| SES Provider Log group | Log Group | Refer CF script |
+| SES Provider Lambda Role | IAM Role | Refer CF script |
+| SES Provider | SES Provider | Refer CF script |
 
 
 

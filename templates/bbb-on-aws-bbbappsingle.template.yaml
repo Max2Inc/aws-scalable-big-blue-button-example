@@ -295,8 +295,6 @@ Resources:
           echo "apt install -y git binutils python3-pip python-pip build-essential python-dev python-setuptools jq" >> $AWS_BBB_LOGS 
           apt install -y git binutils python3-pip python-pip build-essential python-dev python-setuptools jq
 
-          ln -s /root/aws-cfn-bootstrap-latest/init/ubuntu/cfn-hup /etc/init.d/cfn-hup
-                            
           echo "pip3 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-py3-latest.tar.gz" >> $AWS_BBB_LOGS 
           pip3 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-py3-latest.tar.gz
 
@@ -394,6 +392,9 @@ Resources:
           ./awslogs-agent-setup.py -n -r ${AWS::Region} -c /tmp/bbb-cwagent.config
           systemctl enable awslogs
           echo "Completed enabling aws logs" >> $AWS_BBB_LOGS
+
+          echo "bbb-conf --check" >> $AWS_BBB_LOGS
+          bbb-conf --check >> $AWS_BBB_LOGS
   
           /usr/local/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource BBBApplicationAutoScaling --region ${AWS::Region} || true
 
