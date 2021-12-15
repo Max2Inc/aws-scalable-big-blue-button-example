@@ -54,7 +54,7 @@ During a Single Deployment the following resources are created
     "BBBDBEngineVersion": "10.14",
     "BBBEnvironmentStage": "dev",
     "BBBEnvironmentName": "bbbonaws",
-    "BBBEnvironmentType": "scalable",
+    "BBBEnvironmentType": "single",
     "BBBgreenlightImage": "bigbluebutton/greenlight:v2",
     "BBBScaleliteApiImage": "blindsidenetwks/scalelite:v1.3-api",
     "BBBScaleliteNginxImage": "blindsidenetwks/scalelite:v1.3-nginx",
