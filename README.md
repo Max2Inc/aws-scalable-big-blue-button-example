@@ -5,7 +5,7 @@
 
 This is a customized version of the BBB deployment on AWS for MAX2INC. Please refer to 
 
-* [single-deployment.md](single-deployment.md)
+* [single-instance-deployment.md](single-instance-deployment.md)
 
 # **Scalable Big Blue Button Video Conference Example**
 Example deployment of a scalable Video Conference System
