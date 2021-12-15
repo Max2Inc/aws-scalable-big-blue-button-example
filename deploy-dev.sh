@@ -3,22 +3,22 @@
 FILE_NAME=deploy-dev.sh
 
 # Specify an AWS Profile to use
-AWS_PROFILE=
+AWS_PROFILE=cloudtel
 
 # Stack name to be built
-STACK_NAME=
+STACK_NAME=bbb-dev
 
 #Specify an email
-EMAIL=
+EMAIL=arun.ganesan@cloudtelsolutions.com
 
 # Specify a hosted zone to create the required resources.
-HOSTED_ZONE=
+HOSTED_ZONE=Z06535511CU5UKTIIP8CL
 
 #S3 bucket to house the cloudformation templates.
 S3_BUCKET_STACK=$STACK_NAME-sources
 
 # Domain name
-DNAME=
+DNAME=cloudtrainer.online
 
 
 if [[ -z $AWS_PROFILE ]]; then
