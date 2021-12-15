@@ -18,7 +18,6 @@ During a Single Deployment the following resources are created
 * [Turn Stack](help/single/5-Turn-stack.md)
 * [App Stack](help/single/6-BBB-App-single.md)
 
-
 # To run a single deployment refer to the following config parameters in bbb-on-aws-param.json
 
 ```json
