@@ -395,7 +395,10 @@ Resources:
 
           echo "bbb-conf --check" >> $AWS_BBB_LOGS
           bbb-conf --check >> $AWS_BBB_LOGS
-  
+          
+          echo "bbb-conf --restart" >> $AWS_BBB_LOGS
+          bbb-conf --restart
+
           /usr/local/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource BBBApplicationAutoScaling --region ${AWS::Region} || true
 
 Outputs:
