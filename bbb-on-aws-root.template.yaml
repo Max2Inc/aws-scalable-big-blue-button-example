@@ -961,7 +961,6 @@ Resources:
       Parameters:
         BBBApplicationVersion:
           Ref: BBBApplicationVersion
-  0
         BBBOperatorEMail:
           Ref: BBBOperatorEMail
         BBBTurnSecret:
@@ -1157,7 +1156,6 @@ Resources:
     Type: AWS::CloudFormation::Stack
     Condition: BBBScalableEnvironment
     Properties:
-      DependsOn: BBBECSStack
       TemplateURL:
         Fn::Join:
           - ""
