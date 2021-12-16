@@ -947,7 +947,6 @@ Resources:
           Value: !Ref BBBEnvironmentStage
         - Key: Datadog_Monitor
           Value: !Ref DataDogMonitorFlag
-          
 
   BBBAppStack:
     Type: AWS::CloudFormation::Stack
@@ -962,8 +961,7 @@ Resources:
       Parameters:
         BBBApplicationVersion:
           Ref: BBBApplicationVersion
-        BBBStackBucketStack:
-          Fn::ImportValue: !Sub "${BBBStackBucketStack}-BBBStackBucket"
+  0
         BBBOperatorEMail:
           Ref: BBBOperatorEMail
         BBBTurnSecret:
@@ -1050,10 +1048,12 @@ Resources:
             - Outputs.BBBECSCluster
         BBBScaleliteTaskExecutionRole:
           Fn::GetAtt:
-            - BBBFontendAppsStack
+            - BBBFrontendAppsStack
             - Outputs.BBBScaleliteTaskExecutionRole
         BBBECSInstanceType:
           Ref: BBBECSInstanceType
+        BBBInstanceKey:
+          Ref: BBBInstanceKey          
       Tags:
         - Key: Name
           Value:
@@ -1152,10 +1152,12 @@ Resources:
         - Key: Datadog_Monitor
           Value: !Ref DataDogMonitorFlag
 
-  BBBFontendAppsStack:
+
+  BBBFrontendAppsStack:
     Type: AWS::CloudFormation::Stack
     Condition: BBBScalableEnvironment
     Properties:
+      DependsOn: BBBECSStack
       TemplateURL:
         Fn::Join:
           - ""
