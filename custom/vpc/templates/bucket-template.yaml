@@ -1,0 +1,25 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: > 
+  This Cloudformation Template deploys the network for the application infrastructure.
+  Author: Arun Ganesan <arun.ganesan@veeasystems.com>
+
+Resources:
+  BBBStackBucket:
+    Type: AWS::S3::Bucket
+    Description: This is the S3 Bucket for the CF Template files and the BigBlueButton application source files.
+    DeletionPolicy: Delete
+    Properties: 
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption: 
+        ServerSideEncryptionConfiguration: 
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+Outputs: 
+  BBBStackBucketName:
+    Description: Bucket name for the bucket holfing CF Template files and the BigBlueButton application source Files.
+    Value: 
+      Ref: BBBStackBucket
+    Export: 
+      Name: !Sub "${AWS::StackName}-BBBStackBucket"
